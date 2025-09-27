@@ -103,73 +103,48 @@
             <div class="booking-form-wrapper" data-aos="fade-left" data-aos-delay="200">
               <div class="booking-form">
                 <h3 class="form-title">Monte sua viagem</h3>
-                <form action="" class="">
+                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                  
+                  <!-- Dados da viagem -->
                   <div class="form-group mb-3">
                     <label for="destination">Destinos</label>
-                    <select name="destination" id="destination" class="form-select" required="">
+                    <select name="destination" id="destination" class="form-select" required>
                       <option value="">Escolha seu roteiro</option>
-                      <option value="europe">Fazzenda Park</option>
-                      <option value="asia">Águas de Palmas</option>
-                      <option value="america">Florianópolis</option>
-                      <option value="africa">Cascanéia</option>
-                      <option value="oceania">Beto Carrero</option>
+                      <option value="Fazzenda Park">Fazzenda Park</option>
+                      <option value="Águas de Palmas">Águas de Palmas</option>
+                      <option value="Florianópolis">Florianópolis</option>
+                      <option value="Cascanéia">Cascanéia</option>
+                      <option value="Beto Carrero">Beto Carrero</option>
                     </select>
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="checkin">Data de saída</label>
-                        <input type="date" name="checkin" id="checkin" class="form-control" required="">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="checkout">Data de retorno</label>
-                        <input type="date" name="checkout" id="checkout" class="form-control" required="">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="adults">Professores</label>
-                        <select name="adults" id="adults" class="form-select" required="">
-                          <option value="1">Sem professor</option>
-                          <option value="2">1 professor</option>
-                          <option value="3">2 professores</option>
-                          <option value="4">+3 professores</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="children">Formandos</label>
-                        <select name="children" id="children" class="form-select">
-                          <option value="0">12 formandos</option>
-                          <option value="1">22 formandos</option>
-                          <option value="2">35 formandos</option>
-                          <option value="3">+35 formandos</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
+                  <!-- Nome -->
                   <div class="form-group mb-3">
-                    <label for="tour-type">Tipo de viagem</label>
-                    <select name="tour_type" id="tour-type" class="form-select" required="">
-                      <option value="">Selecione o tipo</option>
-                      <option value="adventure">Formatura</option>
-                      <option value="cultural">Pedagógica</option>
-                      <option value="relaxation">Grupo Personalizado</option>
-                      <option value="family">Família</option>
-                      <option value="luxury">Eco Aventura</option>
-                    </select>
+                    <label for="name">Seu nome</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                  </div>
+
+                  <!-- E-mail -->
+                  <div class="form-group mb-3">
+                    <label for="email">Seu e-mail</label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                  </div>
+
+                  <!-- Telefone -->
+                  <div class="form-group mb-3">
+                    <label for="phone">Telefone</label>
+                    <input type="text" name="phone" id="phone" class="form-control">
+                  </div>
+
+                  <!-- Mensagem -->
+                  <div class="form-group mb-3">
+                    <label for="message">Mensagem</label>
+                    <textarea name="message" id="message" class="form-control" rows="4" required></textarea>
                   </div>
 
                   <button type="submit" class="btn btn-primary w-100">Montar viagem</button>
                 </form>
+
               </div>
             </div>
           </div>
