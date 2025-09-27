@@ -1570,6 +1570,7 @@ section,
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  pointer-events: none; /* ---------> IMPEDIR DOWNLOADS IMAGENS CARDS */
 }
 
 .featured-tours .tour-card .tour-image .tour-badge {
