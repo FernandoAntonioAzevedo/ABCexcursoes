@@ -525,6 +525,10 @@ h6 {
   padding-top: 50px;
 }
 
+.logo-footer {
+  width: 170px;
+}
+
 .footer .social-links a {
   display: flex;
   align-items: center;
