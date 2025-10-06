@@ -12,8 +12,8 @@
 /* Cores Globais - As seguintes variáveis ​​de cores são usadas em todo o site. Atualizá-las aqui alterará o esquema de cores de todo o site. */
 :root { 
   --background-color: #ffffff; /* Cor de fundo para todo o site, incluindo seções individuais */
-  --default-color: #051e23; /* Cor padrão usada para a maior parte do conteúdo de texto em todo o site */
-  --heading-color: #1c4b56; /* Color for headings, subheadings and title throughout the website */
+  --default-color: #000000; /* Cor padrão usada para a maior parte do conteúdo de texto em todo o site */
+  --heading-color: #000000; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #4b3619; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
@@ -544,8 +544,8 @@ h6 {
 }
 
 .footer .social-links a:hover {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
+  color: #fff200;
+  border-color: #fff200;
 }
 
 .footer h4 {
@@ -569,7 +569,7 @@ h6 {
   margin-right: 3px;
   font-size: 12px;
   line-height: 0;
-  color: var(--accent-color);
+  color: #fff200;
 }
 
 .footer .footer-links ul li {
@@ -589,7 +589,7 @@ h6 {
 }
 
 .footer .footer-links ul a:hover {
-  color: var(--accent-color);
+  color: #fff200;
 }
 
 .footer .footer-about a {
@@ -610,6 +610,14 @@ h6 {
 
 .footer .copyright p {
   margin-bottom: 0;
+}
+
+.footer a {
+  color: #ffffff;
+}
+
+.footer a:hover {
+  color: #fff200;
 }
 
 .footer .credits {
@@ -2823,6 +2831,87 @@ section,
 /*--------------------------------------------------------------
 # Travel Destinations Section
 --------------------------------------------------------------*/
+
+
+/* ===== DESTINOS - EFEITOS VISUAIS ===== */
+.destination-tile {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.tile-image {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.tile-image img {
+  transition: transform 0.6s ease, filter 0.6s ease;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
+.destination-tile:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.destination-tile:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.overlay-content {
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.2rem;
+  border-radius: 0 0 16px 16px;
+  transition: all 0.3s ease;
+}
+
+.destination-tile:hover .overlay-content {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.destination-info h4 {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.destination-info p {
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.destination-stats {
+  font-size: 0.85rem;
+}
+
+.destination-tag {
+  background: #f9b700;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+
+
+
+
+
+
 .travel-destinations .destination-filters {
   list-style: none;
   padding: 0;
