@@ -1,23 +1,23 @@
 <?php
-  /**
-   * Formulário de contato - ABC Excursões
-   * Envio via Gmail SMTP
-   */
+/**
+ * Envio de formulário de contato via Gmail SMTP
+ * ABC Excursões
+ */
 
-  // Seu e-mail de recebimento
-  $receiving_email_address = 'fernandoabcexcursoes@gmail.com';
+$receiving_email_address = 'fernandoabcexcursoes@gmail.com'; // Seu e-mail de recebimento
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+// Caminho da biblioteca PHP Email Form
+if (file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php')) {
+  include($php_email_form);
+} else {
+  die('Erro: não foi possível carregar a biblioteca PHP Email Form!');
+}
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  // Configuração SMTP Gmail
-  $contact->smtp = array(
+$contact = new PHP_Email_Form;
+$contact->ajax = true;
+
+// Configuração do Gmail SMTP
+$contact->smtp = array(
     'host' => 'smtp.gmail.com',
     'username' => 'fernandoabcexcursoes@gmail.com',
     'password' => 'yonz lvzm hlja gcdd', 
@@ -25,28 +25,19 @@
     'encryption' => 'tls'
   );
 
-  // Assunto e remetente
-  $contact->to = $receiving_email_address;
-  $contact->from_name = isset($_POST['name']) ? $_POST['name'] : 'Visitante';
-  $contact->from_email = isset($_POST['email']) ? $_POST['email'] : $receiving_email_address;
-  $contact->subject = "📩 Nova solicitação de viagem pelo site";
+// Dados do remetente e assunto
+$contact->to = $receiving_email_address;
+$contact->from_name = isset($_POST['name']) ? $_POST['name'] : 'Visitante';
+$contact->from_email = isset($_POST['email']) ? $_POST['email'] : $receiving_email_address;
+$contact->subject = "📬 Nova mensagem de contato pelo site";
 
-  // Campos de contato
-  if(isset($_POST['name'])) $contact->add_message($_POST['name'], 'Nome');
-  if(isset($_POST['email'])) $contact->add_message($_POST['email'], 'E-mail');
-  if(isset($_POST['phone'])) $contact->add_message($_POST['phone'], 'Telefone');
+// Corpo da mensagem
+if (isset($_POST['name'])) $contact->add_message($_POST['name'], 'Nome');
+if (isset($_POST['email'])) $contact->add_message($_POST['email'], 'E-mail');
+if (isset($_POST['phone'])) $contact->add_message($_POST['phone'], 'Telefone');
+if (isset($_POST['subject'])) $contact->add_message($_POST['subject'], 'Assunto');
+if (isset($_POST['message'])) $contact->add_message($_POST['message'], 'Mensagem', 10);
 
-  // Campos da viagem
-  if(isset($_POST['destination'])) $contact->add_message($_POST['destination'], 'Destino');
-  if(isset($_POST['checkin'])) $contact->add_message($_POST['checkin'], 'Data de saída');
-  if(isset($_POST['checkout'])) $contact->add_message($_POST['checkout'], 'Data de retorno');
-  if(isset($_POST['adults'])) $contact->add_message($_POST['adults'], 'Professores');
-  if(isset($_POST['children'])) $contact->add_message($_POST['children'], 'Formandos');
-  if(isset($_POST['tour_type'])) $contact->add_message($_POST['tour_type'], 'Tipo de viagem');
-
-  // Mensagem do cliente
-  if(isset($_POST['message'])) $contact->add_message($_POST['message'], 'Mensagem', 10);
-
-  // Envia e retorna a resposta
-  echo $contact->send();
+// Envia e retorna o status
+echo $contact->send();
 ?>
