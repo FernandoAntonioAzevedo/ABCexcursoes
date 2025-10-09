@@ -1,16 +1,14 @@
 <?php
 /**
- * Envio de formulário de contato via Gmail SMTP
- * ABC Excursões
+ * ABC Excursões - Envio de formulário de contato via Gmail SMTP
  */
 
-$receiving_email_address = 'fernandoabcexcursoes@gmail.com'; // Seu e-mail de recebimento
+$receiving_email_address = 'fernandoabcexcursoes@gmail.com';
 
-// Caminho da biblioteca PHP Email Form
 if (file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php')) {
   include($php_email_form);
 } else {
-  die('Erro: não foi possível carregar a biblioteca PHP Email Form!');
+  die(json_encode(['status' => 'error', 'message' => 'Erro interno: biblioteca PHP Email Form não encontrada.']));
 }
 
 $contact = new PHP_Email_Form;
@@ -20,24 +18,27 @@ $contact->ajax = true;
 $contact->smtp = array(
     'host' => 'smtp.gmail.com',
     'username' => 'fernandoabcexcursoes@gmail.com',
-    'password' => 'yonz lvzm hlja gcdd', 
+    'password' => 'yonzlvzmhljagcdd', 
     'port' => '587',
     'encryption' => 'tls'
   );
 
-// Dados do remetente e assunto
+// Configuração básica do e-mail
 $contact->to = $receiving_email_address;
-$contact->from_name = isset($_POST['name']) ? $_POST['name'] : 'Visitante';
-$contact->from_email = isset($_POST['email']) ? $_POST['email'] : $receiving_email_address;
-$contact->subject = "📬 Nova mensagem de contato pelo site";
+$contact->from_name = $_POST['name'] ?? 'Visitante';
+$contact->from_email = $_POST['email'] ?? $receiving_email_address;
+$contact->subject = $_POST['subject'] ?? 'Mensagem via site';
 
 // Corpo da mensagem
-if (isset($_POST['name'])) $contact->add_message($_POST['name'], 'Nome');
-if (isset($_POST['email'])) $contact->add_message($_POST['email'], 'E-mail');
-if (isset($_POST['phone'])) $contact->add_message($_POST['phone'], 'Telefone');
-if (isset($_POST['subject'])) $contact->add_message($_POST['subject'], 'Assunto');
-if (isset($_POST['message'])) $contact->add_message($_POST['message'], 'Mensagem', 10);
+$contact->add_message($_POST['name'] ?? '', 'Nome');
+$contact->add_message($_POST['email'] ?? '', 'E-mail');
+$contact->add_message($_POST['subject'] ?? '', 'Assunto');
+$contact->add_message($_POST['message'] ?? '', 'Mensagem', 10);
 
-// Envia e retorna o status
-echo $contact->send();
+// Envio
+if ($contact->send()) {
+  echo json_encode(['status' => 'success', 'message' => '✅ Mensagem enviada com sucesso!']);
+} else {
+  echo json_encode(['status' => 'error', 'message' => '❌ Ocorreu um erro ao enviar. Tente novamente.']);
+}
 ?>
