@@ -175,7 +175,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                  <button type="submit" class="btn btn-primary btn-submit">Enviar mensagem</button>
+                  <button type="submit" class="btn btn-primary btn-submit">Enviar via WhatsApp</button>
                 </div>
               </form>
             </div>
@@ -279,40 +279,35 @@
 
   <!-- Alerta + Envio -->
   <script>
-    const toast = document.getElementById('toast');
-    function showToast(message, type = 'success') {
-      toast.textContent = message;
-      toast.className = `toast-alert toast-${type} show`;
-      setTimeout(() => toast.classList.remove('show'), 4000);
-    }
+  document.querySelector('.php-email-form').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-    document.querySelector('.php-email-form').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const form = this;
-      const btn = form.querySelector('.btn-submit');
-      const formData = new FormData(form);
+    const form = this;
+    const nome = form.querySelector('input[name="name"]').value.trim();
+    const email = form.querySelector('input[name="email"]').value.trim();
+    const assunto = form.querySelector('input[name="subject"]').value.trim();
+    const mensagem = form.querySelector('textarea[name="message"]').value.trim();
 
-      btn.disabled = true;
-      btn.textContent = 'Enviando...';
+    // Número de destino (com DDI 55 e DDD)
+    const telefone = '5541999416552';
 
-      try {
-        const response = await fetch(form.action, { method: 'POST', body: formData });
-        const result = await response.json();
+    // Monta o texto da mensagem
+    const texto = `
+🌍 *Novo contato via site ABC Excursões*:
+👤 *Nome:* ${nome}
+✉️ *E-mail:* ${email}
+📝 *Assunto:* ${assunto}
+💬 *Mensagem:* ${mensagem}
+    `.trim();
 
-        if (result.status === 'success') {
-          showToast(result.message, 'success');
-          form.reset();
-        } else {
-          showToast(result.message || 'Erro ao enviar mensagem.', 'error');
-        }
-      } catch (error) {
-        showToast('❌ Falha de conexão com o servidor.', 'error');
-      }
+    // Codifica e cria o link
+    const link = `https://api.whatsapp.com/send?phone=${telefone}&text=${encodeURIComponent(texto)}`;
 
-      btn.disabled = false;
-      btn.textContent = 'Enviar mensagem';
-    });
-  </script>
+    // Abre o WhatsApp
+    window.open(link, '_blank');
+  });
+</script>
+
 
 </body>
 </html>
