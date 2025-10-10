@@ -1,44 +1,55 @@
 <?php
-/**
- * ABC Excursões - Envio de formulário de contato via Gmail SMTP
- */
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-$receiving_email_address = 'fernandoabcexcursoes@gmail.com';
+// Carrega o autoloader do PHPMailer (se não houver, pode baixar em github.com/PHPMailer/PHPMailer)
+require '../assets/vendor/PHPMailer/src/Exception.php';
+require '../assets/vendor/PHPMailer/src/PHPMailer.php';
+require '../assets/vendor/PHPMailer/src/SMTP.php';
 
-if (file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php')) {
-  include($php_email_form);
-} else {
-  die(json_encode(['status' => 'error', 'message' => 'Erro interno: biblioteca PHP Email Form não encontrada.']));
-}
+// Verifica se o formulário foi enviado
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-$contact = new PHP_Email_Form;
-$contact->ajax = true;
+    $nome = $_POST['name'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $assunto = $_POST['subject'] ?? 'Mensagem via site';
+    $mensagem = $_POST['message'] ?? '';
 
-// Configuração do Gmail SMTP
-$contact->smtp = array(
-    'host' => 'smtp.gmail.com',
-    'username' => 'fernandoabcexcursoes@gmail.com',
-    'password' => 'yonzlvzmhljagcdd', 
-    'port' => '587',
-    'encryption' => 'tls'
-  );
+    // Configurações do e-mail
+    $mail = new PHPMailer(true);
 
-// Configuração básica do e-mail
-$contact->to = $receiving_email_address;
-$contact->from_name = $_POST['name'] ?? 'Visitante';
-$contact->from_email = $_POST['email'] ?? $receiving_email_address;
-$contact->subject = $_POST['subject'] ?? 'Mensagem via site';
+    try {
+        // Configuração do servidor Gmail SMTP
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'fernandoabcexcursoes@gmail.com'; // Seu Gmail
+        $mail->Password   = 'yonzlvzmhljagcdd';              // Senha de app (16 caracteres)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
 
-// Corpo da mensagem
-$contact->add_message($_POST['name'] ?? '', 'Nome');
-$contact->add_message($_POST['email'] ?? '', 'E-mail');
-$contact->add_message($_POST['subject'] ?? '', 'Assunto');
-$contact->add_message($_POST['message'] ?? '', 'Mensagem', 10);
+        // Remetente e destinatário
+        $mail->setFrom($email, $nome);
+        $mail->addAddress('fernandoabcexcursoes@gmail.com', 'ABC Excursões');
 
-// Envio
-if ($contact->send()) {
-  echo json_encode(['status' => 'success', 'message' => '✅ Mensagem enviada com sucesso!']);
-} else {
-  echo json_encode(['status' => 'error', 'message' => '❌ Ocorreu um erro ao enviar. Tente novamente.']);
+        // Conteúdo do e-mail
+        $mail->isHTML(true);
+        $mail->Subject = "📬 Nova mensagem de contato - $assunto";
+        $mail->Body    = "
+            <h3>Nova mensagem de contato pelo site</h3>
+            <p><strong>Nome:</strong> {$nome}</p>
+            <p><strong>E-mail:</strong> {$email}</p>
+            <p><strong>Assunto:</strong> {$assunto}</p>
+            <p><strong>Mensagem:</strong><br>{$mensagem}</p>
+        ";
+        $mail->AltBody = "Nome: {$nome}\nE-mail: {$email}\nAssunto: {$assunto}\nMensagem:\n{$mensagem}";
+
+        $mail->send();
+
+        // Retorno AJAX (JSON)
+        echo json_encode(['status' => 'success', 'message' => '✅ Mensagem enviada com sucesso!']);
+    } catch (Exception $e) {
+        echo json_encode(['status' => 'error', 'message' => '❌ Falha ao enviar: ' . $mail->ErrorInfo]);
+    }
 }
 ?>
