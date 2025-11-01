@@ -152,32 +152,48 @@
       </div>
 
       <!-- Contact Form -->
+      <!-- Contact Form -->
       <div class="container form-container-overlap">
         <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
           <div class="col-lg-10">
             <div class="contact-form-wrapper">
-              <h2 class="text-center mb-4">Entre em contato</h2>
+              <h2 class="text-center mb-4">Deixe seus dados, entraremos em contato em breve. </h2>
 
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <form class="php-email-form">
                 <div class="row">
-                  <div class="col-md-6 form-group">
+                  <div class="col-md-6 form-group mb-3">
                     <input type="text" name="name" class="form-control" placeholder="Seu nome" required>
                   </div>
-                  <div class="col-md-6 form-group mt-3 mt-md-0">
-                    <input type="email" name="email" class="form-control" placeholder="Seu e-mail" required>
+                  <div class="col-md-6 form-group mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Seu melhor e-mail" required>
+                  </div>
+                  <div class="col-md-6 form-group mb-3">
+                    <input type="text" name="whatsapp" class="form-control" placeholder="Seu WhatsApp (com DDD)" required>
+                  </div>
+                  <div class="col-md-6 form-group mb-3">
+                    <input type="text" name="instagram" class="form-control" placeholder="Seu Instagram @" required>
+                  </div>
+                  <div class="col-md-6 form-group mb-3">
+                    <input type="text" name="colegio" class="form-control" placeholder="Nome do Colégio" required>
+                  </div>
+                  <div class="col-md-6 form-group mb-3">
+                    <input type="text" name="cidade" class="form-control" placeholder="Cidade" required>
                   </div>
                 </div>
+
                 <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" placeholder="Assunto" required>
+                  <input type="text" name="subject" class="form-control" placeholder="Assunto" required>
                 </div>
+
                 <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="5" placeholder="Mensagem" required></textarea>
+                  <textarea name="message" rows="5" class="form-control" placeholder="Mensagem" required></textarea>
                 </div>
 
                 <div class="text-center mt-4">
-                  <button type="submit" class="btn btn-primary btn-submit">Enviar via WhatsApp</button>
+                  <button type="submit" class="btn btn-primary btn-submit">Enviar meus Dados por WhatsApp</button>
                 </div>
               </form>
+
             </div>
           </div>
         </div>
@@ -277,36 +293,71 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- Alerta + Envio -->
+  <!-- Script WhatsApp -->
   <script>
-  document.querySelector('.php-email-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+    document.querySelector('.php-email-form').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    const form = this;
-    const nome = form.querySelector('input[name="name"]').value.trim();
-    const email = form.querySelector('input[name="email"]').value.trim();
-    const assunto = form.querySelector('input[name="subject"]').value.trim();
-    const mensagem = form.querySelector('textarea[name="message"]').value.trim();
+      const form = this;
+      const btn = form.querySelector('.btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
 
-    // Número de destino (com DDI 55 e DDD)
-    const telefone = '5541999416552';
+      const nome = form.name.value.trim();
+      const email = form.email.value.trim();
+      const whatsapp = form.whatsapp.value.trim();
+      const instagram = form.instagram.value.trim();
+      const colegio = form.colegio.value.trim();
+      const cidade = form.cidade.value.trim();
+      const assunto = form.subject.value.trim();
+      const mensagem = form.message.value.trim();
 
-    // Monta o texto da mensagem
-    const texto = `
-🌍 *Novo contato via site ABC Excursões*:
+      const telefone = '5541999416552'; // Número do WhatsApp destino
+
+      const texto = `
+🌍 *Novo contato via site ABC Excursões*
+-----------------------------------
 👤 *Nome:* ${nome}
+🏫 *Colégio:* ${colegio}
+📍 *Cidade:* ${cidade}
+📱 *WhatsApp:* ${whatsapp}
+📸 *Instagram:* ${instagram}
 ✉️ *E-mail:* ${email}
 📝 *Assunto:* ${assunto}
 💬 *Mensagem:* ${mensagem}
-    `.trim();
+-----------------------------------
+Enviado automaticamente pelo site.
+      `.trim();
 
-    // Codifica e cria o link
-    const link = `https://api.whatsapp.com/send?phone=${telefone}&text=${encodeURIComponent(texto)}`;
+      const link = `https://api.whatsapp.com/send?phone=${telefone}&text=${encodeURIComponent(texto)}`;
+      window.open(link, '_blank');
 
-    // Abre o WhatsApp
-    window.open(link, '_blank');
-  });
-</script>
+      // Alerta animado
+      const alertBox = document.createElement('div');
+      alertBox.style.position = 'fixed';
+      alertBox.style.top = '20px';
+      alertBox.style.right = '20px';
+      alertBox.style.padding = '15px 25px';
+      alertBox.style.borderRadius = '10px';
+      alertBox.style.backgroundColor = '#28a745';
+      alertBox.style.color = '#fff';
+      alertBox.style.fontWeight = '600';
+      alertBox.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+      alertBox.style.transition = '0.4s ease';
+      alertBox.textContent = '✅ Redirecionando para o WhatsApp...';
+      document.body.appendChild(alertBox);
+
+      setTimeout(() => {
+        alertBox.style.opacity = '0';
+        setTimeout(() => alertBox.remove(), 500);
+      }, 3500);
+
+      btn.disabled = false;
+      btn.textContent = 'Enviar mensagem';
+      form.reset();
+    });
+  </script>
+
 
 
 </body>
