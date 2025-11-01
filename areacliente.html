@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Área do Cliente - ABC Excursões</title>
+  <meta name="description" content="Acesse sua área do cliente ABC Excursões para acompanhar viagens e cadastros.">
+  <meta name="keywords" content="área do cliente, login, cadastro, ABC Excursões">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.abcexcursoes.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .client-area {
+      padding: 120px 0;
+      background-color: #f8f8f8;
+      min-height: 100vh;
+    }
+
+    .client-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 550px;
+      margin: 0 auto;
+      padding: 40px 30px;
+      transition: 0.3s;
+    }
+
+    .client-box h2 {
+      text-align: center;
+      font-weight: 600;
+      color: #3c2e1e;
+      margin-bottom: 25px;
+    }
+
+    .nav-tabs {
+      border: none;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .nav-tabs .nav-link {
+      border: none;
+      background: #eee;
+      color: #555;
+      border-radius: 50px;
+      margin: 0 5px;
+      padding: 10px 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .nav-tabs .nav-link.active {
+      background-color: #6b522d;
+      color: #fff;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid #ddd;
+    }
+
+    .btn-custom {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      background-color: #6b522d;
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #836844;
+      transform: scale(1.02);
+    }
+
+    .small-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #6b522d;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .small-link:hover {
+      text-decoration: underline;
+    }
+
+    .client-area {
+      padding-bottom: 40px; /* estava 120px no total, agora fica mais compacto */
+    }
+
+
+  </style>
+</head>
+
+<body class="client-page">
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div
+      class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="assets/img/logos/logoABC.Branca_SFundo.png" alt="">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="formatura.html">Destinos</a></li>
+          <li><a href="#">Galeria</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="contatos.html">Contatos</a></li>
+          <li><a href="areacliente.html" class="active">Área do Cliente</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="https://api.whatsapp.com/send?1=pt_BR&phone=5541999416552" target="_blank">Fale Conosco</a>
+    </div>
+  </header>
+  <!-- /Header -->
+
+  <!-- Main -->
+  <main class="main">
+    <section class="client-area">
+      <div class="container" data-aos="fade-up">
+        <div class="client-box">
+
+          <ul class="nav nav-tabs" id="clientTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button"
+                role="tab" aria-controls="login" aria-selected="true">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="cadastro-tab" data-bs-toggle="tab" data-bs-target="#cadastro" type="button"
+                role="tab" aria-controls="cadastro" aria-selected="false">Novo Cadastro</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="clientTabsContent">
+            <!-- Login -->
+            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+              <h2>Acesse sua conta</h2>
+              <form>
+                <div class="mb-3">
+                  <input type="email" class="form-control" placeholder="Seu e-mail" required>
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" placeholder="Sua senha" required>
+                </div>
+                <button type="submit" class="btn-custom">Entrar</button>
+                <a href="#" class="small-link">Esqueceu sua senha?</a>
+              </form>
+            </div>
+
+            <!-- Cadastro -->
+            <div class="tab-pane fade" id="cadastro" role="tabpanel" aria-labelledby="cadastro-tab">
+              <h2>Crie sua conta</h2>
+              <form>
+                <div class="mb-3">
+                  <input type="text" class="form-control" placeholder="Nome completo" required>
+                </div>
+                <div class="mb-3">
+                  <input type="email" class="form-control" placeholder="E-mail" required>
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" placeholder="Crie uma senha" required>
+                </div>
+                <div class="mb-3">
+                  <input type="text" class="form-control" placeholder="Telefone / WhatsApp" required>
+                </div>
+                <div class="mb-3">
+                  <input type="text" class="form-control" placeholder="Colégio" required>
+                </div>
+                <button type="submit" class="btn-custom">Cadastrar</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer position-relative dark-background">    
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="d-flex align-items-center">
+            <img class="logo-footer" src="assets/img/logos/logoABC.Branca_SFundo.png" alt=""> 
+            <span class="sitename"></span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>Rua Edemar Ernsen, 99</p>
+            <p>Curitiba, PR - 81200-490</p>
+
+            <p><strong>Atendimento:</strong> <span>somente a grupos</span></p>
+            <p class="mt-3"><strong>WhatsApp:</strong> <span>(41) 99941-6552</span></p>
+            <p><strong>Email:</strong> <span>fernandoabcexcursoes@gmail.com</span></p>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Links Úteis</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Início</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="sobre.html">Sobre Nós</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="formatura.html">Destinos</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="galeria.html">Galeria</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Opções de viagens</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Pedagógicas</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="formatura.html">Viagens de formatura</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Grupos Personalizados</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Família</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12">
+          <h4>Siga-nos!</h4>
+          <p>Em nossas das redes sociais.</p>
+          <div class="social-links d-flex">
+            <a href="#"><i class="bi bi-tiktok"></i></a>
+            <a href="https://facebook.com/abcexcursoes"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/abcexcursoes"><i class="bi bi-instagram"></i></a>            
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>All Rights Reserved <span> ©</span> 2025 <strong class="px-1 sitename">ABC excursões ME</strong> <span></span></p>
+      <div class="credits">
+        
+        Desenvolvido por <a href="https://beratech.com.br">Bera Tech Sistemas</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Botão Flutuante do WhatsApp -->
+  <a href="https://api.whatsapp.com/send?phone=5541999416552&text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20viagens%20da%20ABC%20Excursões."
+    class="whatsapp-float" target="_blank" aria-label="Contato via WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 70px; /* um pouco acima do scroll-top */
+      right: 20px;
+      background-color: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 43px;
+      height: 43px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      z-index: 9999;
+      transition: all 0.3s ease;
+      animation: pulse 1.8s infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #20ba5a;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+  </style>
+
+</body>
+
+</html>
