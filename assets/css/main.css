@@ -13,23 +13,24 @@
 :root { 
   --background-color: #ffffff; /* Cor de fundo para todo o site, incluindo seções individuais */
   --default-color: #000000; /* Cor padrão usada para a maior parte do conteúdo de texto em todo o site */
-  --heading-color: #000000; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #4b3619; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --heading-color: #000000; /* Cores para títulos, subtítulos e cabeçalhos em todo o site. */
+  --accent-color: #4b3619; /* Cor de destaque que representa sua marca no site. Ela é usada em botões, links e outros elementos que precisam se sobressair. */
+  --surface-color: #ffffff; /* A cor da superfície é usada como plano de fundo de elementos em caixas dentro de seções, como cartões, caixas de ícones ou outros elementos que exigem uma separação visual do plano de fundo global. */
+  --contrast-color: #ffffff; /* Defina a cor de contraste para o texto, garantindo a legibilidade em fundos de cores de destaque, títulos ou cores padrão. */
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+/* Cores do Menu de Navegação - As seguintes variáveis ​​de cor são usadas especificamente para o menu de navegação. Elas são separadas das cores globais para permitir mais opções de personalização. */
 :root {
-  --nav-color: rgba(255, 255, 255, 0.7);  /* The default color of the main navmenu links */
-  --nav-hover-color: #fff200; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #051e23; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #008cad; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: rgba(255, 255, 255, 0.7);  /* A cor padrão dos links do menu de navegação principal. */
+  --nav-hover-color: #fff200; /* Aplicado aos links do menu de navegação principal quando o cursor está sobre eles ou quando estão ativos. */
+  --nav-mobile-background-color: #ffffff; /* Usada como cor de fundo para o menu de navegação em dispositivos móveis. */
+  --nav-dropdown-background-color: #ffffff; /* Usada como cor de fundo para os itens suspensos que aparecem ao passar o cursor sobre os itens de navegação principais. */
+  --nav-dropdown-color: #051e23; /* Utilizado para os links de navegação dos itens suspensos no menu de navegação. */
+  --nav-dropdown-hover-color: #008cad; /* Semelhante a --nav-hover-color, esta cor é aplicada aos links de navegação suspensos quando o cursor passa sobre eles. */
 }
 
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+/* Predefinições de cores - Essas classes substituem as cores globais quando aplicadas a qualquer seção ou elemento, permitindo a reutilização do mesmo esquema de cores. 
+ */
 
 .light-background {
   --background-color: #f2f8f9;
