@@ -1,3 +1,74 @@
+/*
+=====================================================================
+ ABC EXCURSÕES — MAIN.CSS
+=====================================================================
+
+ OBJETIVO
+ --------------------------------------------------------------------
+ Arquivo principal de estilos do site da ABC Excursões.
+
+ IMPORTANTE
+ --------------------------------------------------------------------
+ Esta primeira reorganização é DOCUMENTAL:
+ - nenhuma propriedade CSS existente foi removida;
+ - nenhum valor de cor, tamanho, espaçamento ou breakpoint foi alterado;
+ - as regras continuam na mesma ordem;
+ - foram adicionados comentários e uma estrutura de leitura;
+ - regras herdadas do template permanecem preservadas até serem auditadas.
+
+ ÍNDICE
+ --------------------------------------------------------------------
+ 01. Estilos gerais e classes compartilhadas
+ 02. Header / cabeçalho global
+ 03. Menu de navegação
+ 04. Footer / rodapé global
+ 05. Preloader / carregamento
+ 06. Botão voltar ao topo
+ 07. Ajuste do AOS no mobile
+ 08. Títulos de página e breadcrumbs
+ 09. Seções gerais
+ 10. Títulos das seções
+ 11. Hero principal
+ 12. Por que escolher a ABC
+ 13. Destinos em destaque
+ 14. Tours / roteiros em destaque
+ 15. Depoimentos — Home
+ 16. Call to Action
+ 17. Sobre a ABC
+ 18. Listagem de destinos
+ 19. Detalhes do destino
+ 20. Listagem de tours / roteiros
+ 21. Detalhes do tour / roteiro
+ 22. Booking / solicitação de reserva
+ 23. Slider da galeria
+ 24. Galeria
+ 25. Blog — destaque
+ 26. Blog — posts
+ 27. Paginação
+ 28. Blog — detalhes do post
+ 29. Blog — autor
+ 30. Blog — comentários
+ 31. Blog — formulário de comentários
+ 32. Slider de depoimentos
+ 33. Depoimentos
+ 34. FAQ
+ 35. Contato
+ 36. Termos de serviço
+ 37. Política de privacidade
+ 38. Página 404
+ 39. Starter / seção base do template
+
+ PADRÃO DE MANUTENÇÃO
+ --------------------------------------------------------------------
+ Ao criar uma nova funcionalidade:
+ 1. coloque-a na seção correspondente;
+ 2. se for um componente novo, crie uma seção própria;
+ 3. explique o objetivo do bloco;
+ 4. indique classes/elementos HTML relacionados quando necessário;
+ 5. não misture regras de páginas diferentes sem necessidade.
+
+=====================================================================
+*/
 
 
 @charset "UTF-8";
@@ -9,7 +80,8 @@
   --nav-font: "Poppins",  sans-serif;
 }
 
-/* Cores Globais - As seguintes variáveis ​​de cores são usadas em todo o site. Atualizá-las aqui alterará o esquema de cores de todo o site. */
+/* Cores Globais - As seguintes variáveis ​​de cores são usadas em todo o site. Atualizá-las aqui alterará o esquema 
+de cores de todo o site. */
 :root { 
   --background-color: #ffffff; /* Cor de fundo para todo o site, incluindo seções individuais */
   --default-color: #000000; /* Cor padrão usada para a maior parte do conteúdo de texto em todo o site */
@@ -26,10 +98,11 @@
   --nav-mobile-background-color: #ffffff; /* Usada como cor de fundo para o menu de navegação em dispositivos móveis. */
   --nav-dropdown-background-color: #ffffff; /* Usada como cor de fundo para os itens suspensos que aparecem ao passar o cursor sobre os itens de navegação principais. */
   --nav-dropdown-color: #051e23; /* Utilizado para os links de navegação dos itens suspensos no menu de navegação. */
-  --nav-dropdown-hover-color: #008cad; /* Semelhante a --nav-hover-color, esta cor é aplicada aos links de navegação suspensos quando o cursor passa sobre eles. */
+  --nav-dropdown-hover-color: #4b3619; /* Semelhante a --nav-hover-color, esta cor é aplicada aos links de navegação suspensos quando o cursor passa sobre eles. */
 }
 
-/* Predefinições de cores - Essas classes substituem as cores globais quando aplicadas a qualquer seção ou elemento, permitindo a reutilização do mesmo esquema de cores. 
+/* Predefinições de cores - Essas classes substituem as cores globais quando aplicadas a qualquer seção ou elemento, 
+permitindo a reutilização do mesmo esquema de cores. 
  */
 
 .light-background {
@@ -50,9 +123,21 @@
   scroll-behavior: smooth;
 }
 
-/*--------------------------------------------------------------
-# General Styling & Shared Classes
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 01. ESTILOS GERAIS E CLASSES COMPARTILHADAS
+=====================================================================
+
+ Define os estilos globais utilizados em várias páginas e componentes.
+Inclui corpo da página, links, títulos e mensagens de formulário.
+Evite colocar aqui regras específicas de uma única página.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 body {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -132,9 +217,21 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Global Header
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 02. HEADER / CABEÇALHO GLOBAL
+=====================================================================
+
+ Controla o cabeçalho principal do site.
+Inclui posicionamento, fundo, logo, estado durante o scroll e elementos
+que aparecem no topo das páginas. Alterações aqui podem afetar todo o site.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .header {
   --background-color: rgba(0, 0, 0, 0);
   --default-color: #ffffff;
@@ -221,9 +318,21 @@ h6 {
   --surface-color: rgba(0, 0, 0, 0.7);
 }
 
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 03. MENU DE NAVEGAÇÃO
+=====================================================================
+
+ Estilos do menu principal, dropdowns e navegação mobile.
+O JavaScript também participa do comportamento do menu, portanto alterações
+visuais devem ser feitas mantendo as classes esperadas pelo HTML e pelo JS.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 /* Navmenu - Desktop */
 @media (min-width: 1200px) {
   .navmenu {
@@ -458,9 +567,20 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Global Footer
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 04. FOOTER / RODAPÉ GLOBAL
+=====================================================================
+
+ Controla o rodapé compartilhado pelas páginas.
+Inclui colunas de conteúdo, links, redes sociais e informações finais.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .footer {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -630,9 +750,19 @@ h6 {
 
 
 
-/*--------------------------------------------------------------
-# Preloader
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 05. PRELOADER / CARREGAMENTO
+=====================================================================
+
+ Controla a tela exibida enquanto a página está sendo carregada.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 #preloader {
   position: fixed;
   inset: 0;
@@ -665,9 +795,19 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Scroll Top Button
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 06. BOTÃO VOLTAR AO TOPO
+=====================================================================
+
+ Estilos do botão flutuante utilizado para retornar rapidamente ao topo.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .scroll-top {
   position: fixed;
   visibility: hidden;
@@ -699,18 +839,39 @@ h6 {
   bottom: 15px;
 }
 
-/*--------------------------------------------------------------
-# Disable aos animation delay on mobile devices
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 07. AJUSTE DO AOS NO MOBILE
+=====================================================================
+
+ Remove ou adapta atrasos das animações AOS em telas pequenas,
+evitando que a interface mobile fique lenta ou desconfortável.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 @media screen and (max-width: 768px) {
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
 }
 
-/*--------------------------------------------------------------
-# Global Page Titles & Breadcrumbs
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 08. TÍTULOS DE PÁGINA E BREADCRUMBS
+=====================================================================
+
+ Estilos compartilhados por títulos internos de páginas e breadcrumbs.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .page-title {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -757,9 +918,19 @@ h6 {
   color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
 
-/*--------------------------------------------------------------
-# Global Sections
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 09. SEÇÕES GERAIS
+=====================================================================
+
+ Regras de espaçamento e estrutura utilizadas por diferentes seções do site.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 section,
 .section {
   color: var(--default-color);
@@ -777,9 +948,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Global Section Titles
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 10. TÍTULOS DAS SEÇÕES
+=====================================================================
+
+ Padrão visual para títulos e subtítulos das seções.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .section-title {
   text-align: center;
   padding-bottom: 60px;
@@ -812,9 +993,21 @@ section,
   color: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Travel Hero Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 11. HERO PRINCIPAL / TRAVEL HERO
+=====================================================================
+
+ Área de destaque principal da experiência de viagem.
+Normalmente contém título, subtítulo, chamadas para ação e, quando aplicável,
+elementos de busca/orçamento.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .travel-hero {
   position: relative;
   overflow: hidden;
@@ -1002,9 +1195,20 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Why Us Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 12. POR QUE ESCOLHER A ABC
+=====================================================================
+
+ Apresenta argumentos, diferenciais, estatísticas e informações
+que ajudam a justificar a escolha da agência.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .why-us .content h3 {
   font-size: 2.2rem;
   font-weight: 700;
@@ -1184,9 +1388,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Featured Destinations Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 13. DESTINOS EM DESTAQUE
+=====================================================================
+
+ Cards e elementos utilizados para apresentar destinos destacados.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .featured-destinations .featured-destination {
   height: 600px;
   border-radius: 20px;
@@ -1552,9 +1766,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Featured Tours Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 14. TOURS / ROTEIROS EM DESTAQUE
+=====================================================================
+
+ Estilos dos roteiros ou experiências destacadas na página inicial.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .featured-tours .tour-card {
   background-color: var(--surface-color);
   border-radius: 12px;
@@ -1795,9 +2019,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Testimonials Home Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 15. DEPOIMENTOS — HOME
+=====================================================================
+
+ Componente de depoimentos utilizado na página inicial.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .testimonials-home .testimonials-carousel,
 .testimonials-home .testimonials-slider {
   overflow: hidden;
@@ -1891,9 +2125,20 @@ section,
   background-color: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Call To Action Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 16. CALL TO ACTION / CHAMADAS PARA AÇÃO
+=====================================================================
+
+ Blocos destinados a incentivar o visitante a solicitar orçamento,
+entrar em contato ou avançar para uma próxima etapa.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .call-to-action .hero-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2373,9 +2618,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Travel About Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 17. SOBRE A ABC / TRAVEL ABOUT
+=====================================================================
+
+ Estilos da página ou seção institucional sobre a agência.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .travel-about .intro-content h2 {
   font-size: 3rem;
   font-weight: 800;
@@ -2833,9 +3088,20 @@ section,
   transform: translateY(-2px);
 }
 
-/*--------------------------------------------------------------
-# Travel Destinations Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 18. LISTAGEM DE DESTINOS
+=====================================================================
+
+ Estrutura visual da página de destinos, incluindo cards, filtros
+e elementos relacionados à apresentação dos destinos.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 
 
 /* ===== DESTINOS - EFEITOS VISUAIS ===== */
@@ -3218,9 +3484,20 @@ section,
   transform: translateY(-2px);
 }
 
-/*--------------------------------------------------------------
-# Travel Destination Details Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 19. DETALHES DO DESTINO
+=====================================================================
+
+ Layout da página individual de um destino, incluindo informações,
+imagens, características e chamadas para orçamento.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .travel-destination-details .destination-hero {
   margin-bottom: 80px;
 }
@@ -3769,9 +4046,19 @@ section,
   color: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Travel Tours Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 20. LISTAGEM DE TOURS / ROTEIROS
+=====================================================================
+
+ Estilos da página que apresenta os roteiros disponíveis.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .travel-tours .section-subtitle {
   color: var(--heading-color);
   font-size: 2rem;
@@ -4165,9 +4452,19 @@ section,
   transform: translateY(-2px);
 }
 
-/*--------------------------------------------------------------
-# Travel Tour Details Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 21. DETALHES DO TOUR / ROTEIRO
+=====================================================================
+
+ Layout da página individual de um roteiro ou excursão.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .travel-tour-details .tour-hero {
   margin-bottom: 60px;
 }
@@ -4806,9 +5103,20 @@ section,
   color: #ffc107;
 }
 
-/*--------------------------------------------------------------
-# Travel Booking Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 22. BOOKING / SOLICITAÇÃO DE RESERVA
+=====================================================================
+
+ Estilos relacionados ao formulário e à interface de solicitação
+de reserva/orçamento.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .travel-booking .booking-form-container {
   background-color: var(--surface-color);
   border-radius: 15px;
@@ -5343,9 +5651,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Gallery Slider Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 23. SLIDER DA GALERIA
+=====================================================================
+
+ Controla o componente de slider/carrossel utilizado na galeria.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .gallery-slider {
   overflow: hidden;
 }
@@ -5484,9 +5802,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Gallery Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 24. GALERIA
+=====================================================================
+
+ Grid, imagens, sobreposições e ações da galeria de fotos.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .gallery .isotope-filters {
   display: flex;
   justify-content: center;
@@ -5640,9 +5968,20 @@ section,
   margin: 0;
 }
 
-/*--------------------------------------------------------------
-# Blog Hero Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 25. BLOG — DESTAQUE
+=====================================================================
+
+ Área de destaque da página do blog, incluindo publicação principal
+e posts secundários.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .blog-hero .blog-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -5817,9 +6156,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Blog Posts Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 26. BLOG — POSTS
+=====================================================================
+
+ Cards e estrutura da listagem de publicações do blog.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .blog-posts article {
   background-color: var(--surface-color);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -5874,9 +6223,19 @@ section,
   margin-bottom: 0;
 }
 
-/*--------------------------------------------------------------
-# Pagination 2 Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 27. PAGINAÇÃO
+=====================================================================
+
+ Controles de navegação entre páginas de resultados do blog.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .pagination-2 {
   padding-top: 0;
   color: color-mix(in srgb, var(--default-color), transparent 40%);
@@ -5916,9 +6275,19 @@ section,
   color: var(--contrast-color);
 }
 
-/*--------------------------------------------------------------
-# Blog Details Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 28. BLOG — DETALHES DO POST
+=====================================================================
+
+ Layout completo de uma publicação individual do blog.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .blog-details {
   max-width: 1200px;
   margin: 0 auto;
@@ -6465,9 +6834,19 @@ section,
   transform: translateY(-2px);
 }
 
-/*--------------------------------------------------------------
-# Blog Author Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 29. BLOG — AUTOR
+=====================================================================
+
+ Informações visuais sobre o autor de uma publicação.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .blog-author .author-card {
   display: flex;
   background-color: var(--surface-color);
@@ -6667,9 +7046,19 @@ section,
   transform: translateX(5px);
 }
 
-/*--------------------------------------------------------------
-# Blog Comments Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 30. BLOG — COMENTÁRIOS
+=====================================================================
+
+ Lista e estrutura visual dos comentários de uma publicação.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .blog-comments .comments-header {
   display: flex;
   align-items: center;
@@ -6954,9 +7343,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Blog Comment Form Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 31. BLOG — FORMULÁRIO DE COMENTÁRIOS
+=====================================================================
+
+ Formulário utilizado para envio de comentários.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .blog-comment-form {
   max-width: 900px;
   margin: 30px auto 0 auto;
@@ -7080,9 +7479,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Slider Testimonials Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 32. SLIDER DE DEPOIMENTOS
+=====================================================================
+
+ Configuração visual do componente deslizante de depoimentos.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .slider-testimonials .testimonials-slider {
   width: 100%;
   position: relative;
@@ -7194,9 +7603,19 @@ section,
   color: var(--contrast-color);
 }
 
-/*--------------------------------------------------------------
-# Testimonials Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 33. DEPOIMENTOS
+=====================================================================
+
+ Página ou seção completa de depoimentos.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .testimonials .testimonial-masonry {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -7371,9 +7790,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Faq Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 34. FAQ — PERGUNTAS FREQUENTES
+=====================================================================
+
+ Estilos das perguntas frequentes e seus respectivos conteúdos.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .faq .faq-sidebar {
   position: sticky;
   top: 100px;
@@ -7578,9 +8007,20 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Contact Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 35. CONTATO
+=====================================================================
+
+ Layout das informações de contato e formulários.
+Inclui estados de carregamento, erro e sucesso do formulário.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .contact .contact-info-box {
   background-color: var(--surface-color);
   border-radius: 10px;
@@ -7810,9 +8250,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Terms Of Service Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 36. TERMOS DE SERVIÇO
+=====================================================================
+
+ Estilos da página de termos e condições de uso.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .terms-of-service .tos-header {
   margin-bottom: 60px;
 }
@@ -8107,9 +8557,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Privacy Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 37. POLÍTICA DE PRIVACIDADE
+=====================================================================
+
+ Estilos da página de política de privacidade.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .privacy {
   font-size: 1rem;
   line-height: 1.7;
@@ -8306,9 +8766,19 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Error 404 Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 38. PÁGINA 404
+=====================================================================
+
+ Layout apresentado quando uma página não é encontrada.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .error-404 {
   padding: 100px 0;
   background: linear-gradient(135deg, color-mix(in srgb, var(--background-color), transparent 0%), color-mix(in srgb, var(--background-color), var(--accent-color) 4%));
@@ -8560,9 +9030,20 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
+/*
+=====================================================================
+ 39. STARTER / SEÇÃO BASE DO TEMPLATE
+=====================================================================
+
+ Seção herdada do template original.
+Manter documentada até confirmarmos se ela ainda é utilizada pela ABC.
+
+ --------------------------------------------------------------------
+ Observação: as regras desta seção foram preservadas nesta primeira
+ etapa. A limpeza de duplicidades e código legado será feita depois,
+ somente após verificarmos as páginas que utilizam estes estilos.
+=====================================================================
+*/
 .starter-section {
   /* Add your styles here */
 }
